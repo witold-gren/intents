@@ -89,3 +89,19 @@ entities:
   - name: Sovrumsgardinen
     id: cover.bedroom_curtain
     area: bedroom
+  - name: Rover
+    id: vacuum.rover
+    area: livingroom
+
+  - name: "Stockholm"
+    id: "weather.stockholm"
+    state: "rainy"
+    attributes:
+      temperature: "20"
+      temperature_unit: "°C"
+
+  - name: "TV"
+    id: "media_player.tv"
+    state: "idle"
+    attributes:
+      volume_level: "25"
