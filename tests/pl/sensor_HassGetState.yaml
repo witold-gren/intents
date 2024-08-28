@@ -1,0 +1,653 @@
+language: pl
+tests:
+  # 1. Apparent power
+  - sentences:
+      - "Jaka jest moc pozorna w urządzeniu moc pozorna urządzenia?"
+      - "Jaka jest moc w urządzeniu moc pozorna urządzenia?"
+      - "Jaka jest moc wskazywana przez moc pozorna urządzenia?"
+      - "Jaka jest moc pozorna wskazywana przez moc pozorną urządzenia?"
+    intent:
+      name: HassGetState
+      slots:
+        domain: sensor
+        device_class: apparent_power
+        name:
+          - "Moc pozorna urządzenia"
+          - "Moc pozorną urządzenia"
+    response: "Moc pozorna urządzenia wynosi 2 VA"
+
+  # 2. AQI
+  - sentences:
+      - "Jaki jest wskaźnik jakości powietrza w czujniku powietrza w kuchni?"
+      - "Jaki jest indeks jakości powietrza czujnika powietrza w kuchni?"
+    intent:
+      name: HassGetState
+      slots:
+        domain: sensor
+        device_class: aqi
+        name:
+          - "Czujniku powietrza w kuchni"
+          - "Czujnika powietrza w kuchni"
+    response: "Indeks jakości powietrza wynosi 50"
+
+  # 3. Atmospheric pressure
+  - sentences:
+      - "Jakie jest ciśnienie powietrza w czujniku ciśnienia zewnętrznego?"
+      - "Jakie jest ciśnienie atmosferyczne w czujniku ciśnienia zewnętrznego?"
+      - "Jakie jest ciśnienie atmosferyczne wskazywane przez czujnik ciśnienia zewnętrznego?"
+    intent:
+      name: HassGetState
+      slots:
+        domain: sensor
+        device_class: atmospheric_pressure
+        name:
+          - "Czujnik ciśnienia zewnętrznego"
+          - "Czujniku ciśnienia zewnętrznego"
+    response: "Ciśnienie atmosferyczne wynosi 1000 hPa"
+
+  # 4. Battery
+  - sentences:
+      - "Jaki jest poziom naładowania baterii mojego telefonu?"
+      - "Ile baterii zostało w moim telefonie?"
+      - "Ile procent baterii zostało w moim telefonie?"
+      - "Ile zostało baterii w moim telefonie?"
+      - "Ile zostało procent baterii w moim telefonie?"
+      - "Ile mam procen baterii w moim telefonie?"
+      - "Ile jest baterii w moim telefonie?"
+    intent:
+      name: HassGetState
+      slots:
+        domain: sensor
+        device_class: battery
+        name:
+          - "Mój telefon"
+          - "Moim telefonie"
+          - "Mojego telefonu"
+    response: "Poziom baterii wynosi 98 %"
+
+  # 5. CO2
+  - sentences:
+      - "Jaki jest poziom dwutlenku węgla czujnika pompy ciepła?"
+      - "Jaka jest ilość dwutlenku węgla czujnika pompy ciepła?"
+      - "Jakie jest stężenie dwutlenku węgla wskazywany przez pompę ciepła?"
+    intent:
+      name: HassGetState
+      slots:
+        domain: sensor
+        device_class: carbon_dioxide
+        name:
+          - "Pompy ciepła"
+          - "Pompie ciepła"
+          - "Pompę ciepła"
+    response: "Stężenie dwutlenku węgla wynosi 50 ppm"
+
+  # 6. CO
+  - sentences:
+      - "Jakie jest stężenie tlenku węgla zmierzone przez czujnik pompy ciepła?"
+      - "Jaka jest ilość tlenku węgla czujnika pompy ciepła?"
+      - "Jakie jest stężenie tlenku węgla wskazywany przez pompę ciepła?"
+    intent:
+      name: HassGetState
+      slots:
+        domain: sensor
+        device_class: carbon_monoxide
+        name:
+          - "Pompy ciepła"
+          - "Pompie ciepła"
+          - "Pompę ciepła"
+    response: "Stężenie tlenku węgla wynosi 48 ppm"
+
+  # 7. Current
+  - sentences:
+      - "Jakie jest natężenie prądu wskazywana przez pobór prądu w domu?"
+      - "Jakie jest natężenie prądu elektrycznego wskazywanego przez pobór prądu w domu?"
+    intent:
+      name: HassGetState
+      slots:
+        domain: sensor
+        device_class: current
+        name:
+          - "Pobór prądu w domu"
+    response: "Natężenie prądu elektrycznego wynosi 19 A"
+
+  # 8. Data rate
+  - sentences:
+      - "Jaka jest prędkość pobierania z internetu?"
+      - "Jaka jest szybkość pobierania z internetu?"
+      - "Jaka jest prędkość transmisji z internetu?"
+      - "Jaka jest szybkość transferu z internetu?"
+      - "Jaka jest prędkość transferu danych z internetu?"
+      - "Jaka jest szybkość transmisji danych z internetu?"
+    intent:
+      name: HassGetState
+      slots:
+        domain: sensor
+        device_class: data_rate
+        name:
+          - "Internet"
+          - "Internetu"
+    response: "Prędkość transferu danych wynosi 22.9 MB/s"
+
+  # 9. Data size
+  - sentences:
+      - "Jaki jest rozmiar pliku dziennika?"
+      - "Jaki jest wielkość pliku dziennika?"
+      - "Jaki jest rozmiar danych pliku dziennika?"
+    intent:
+      name: HassGetState
+      slots:
+        domain: sensor
+        device_class: data_size
+        name:
+          - "Plik dziennika"
+          - "Pliku dziennika"
+    response: "Rozmiar danych wynosi 106 kB"
+
+  # 10. TODO: Date
+  - sentences:
+      - "Jaka jest data następnych urodzin?"
+      - "Jaka jest w kalendarzu data następnych urodzin?"
+      - "Kiedy są następne urodziny?"
+      - "Kiedy będą następne urodziny?"
+      - "Kiedy odbędą się następne urodziny?"
+    intent:
+      name: HassGetState
+      slots:
+        domain: sensor
+        device_class: date
+        name:
+          - "Następne urodziny"
+          - "Następnych urodzin"
+    response: "Data w kalendarzu to 2024-12-01"
+
+  # 11. TODO: Distance
+  - sentences:
+      - "Jaki jest przebieg samochodu?"
+    intent:
+      name: HassGetState
+      slots:
+        domain: sensor
+        device_class: distance
+        name:
+          - "Samochód"
+          - "Samochodu"
+    response: "Odległość wynosi 65536 km"
+
+  # 12. Duration
+  - sentences:
+      - "Jaki jest czas trwania bieżącego programu zmywarki?"
+    intent:
+      name: HassGetState
+      slots:
+        domain: sensor
+        device_class: duration
+        name:
+          - "Bieżący program zmywarki"
+          - "Bieżącego programu zmywarki"
+    response: "Czas trwania wynosi 64 min"
+
+  # 13. Energy
+  - sentences:
+      - "Jaka jest ilość energii z produkcji słonecznej?"
+      - "Jaka jest wartość energii z produkcji słonecznej?"
+    intent:
+      name: HassGetState
+      slots:
+        domain: sensor
+        device_class: energy
+        name:
+          - "Produkcji słonecznej"
+          - "Produkcja słoneczna"
+    response: "Energia wynosi 3.2 kWh"
+
+  # 14. Energy storage
+  - sentences:
+      - "Jaka jest ilość zmagazynowanej energii w EcoFlow?"
+      - "Jaka jest całkowita ilość energii w EcoFlow?"
+    intent:
+      name: HassGetState
+      slots:
+        domain: sensor
+        device_class: energy_storage
+        name: "EcoFlow"
+    response: "Ilość zmagazynowanej energii wynosi 6 kWh"
+
+  # 15. Frequency
+  - sentences:
+      - "Jaka jest częstotliwość sieci AC?"
+    intent:
+      name: HassGetState
+      slots:
+        domain: sensor
+        device_class: frequency
+        name:
+          - "Sieć AC"
+          - "Sieci AC"
+    response: "Częstotliwość wynosi 51 Hz"
+
+  # 16. TODO: Gas
+  - sentences:
+      - "Jaką ilość gazu wskazuje miesięczne zużycie gazu?"
+      - "Jaka jest ilość gazu wykorzystana w miesięcznym zużyciu gazu?"
+      - "Jaka jest ilość gazu zużyta w miesięcznym zużyciu gazu?"
+      - "Jaką objętość gazu wskazuje miesięczne zużycie gazu?"
+    intent:
+      name: HassGetState
+      slots:
+        domain: sensor
+        device_class: gas
+        name:
+          - "Miesięczne zużycie gazu"
+          - "Miesięcznym zużyciu gazu"
+    response: "Objętość gazu wynosi 12 m³"
+
+  # 17. Humidity
+  - sentences:
+      - "Jaka jest wilgotność względna wskazywana przez czujnik wilgotności w łazience?"
+      - "Jaka jest wilgotność powietrza wskazywana przez czujnik wilgotności w łazience?"
+    intent:
+      name: HassGetState
+      slots:
+        domain: sensor
+        device_class: humidity
+        name: "Czujnik wilgotności w łazience"
+    response: "Wilgotność względna powietrza wynosi 48 %"
+
+  # # 18. Illuminance
+  # - sentences:
+  #     - "Jaki jest poziom jasności oświetlenia w salonie?"
+  #   intent:
+  #     name: HassGetState
+  #     slots:
+  #       domain: sensor
+  #       device_class: illuminance
+  #       name: "Natężenie oświetlenia w salonie"
+  #   response: "Living room illuminance is 438 lux"
+#
+#   # 19. Irradiance
+#   - sentences:
+#       - "Jakie jest natężenie promieniowania grzejnika w salonie?"
+#       # - "what is the irradiance of Living room heater irradiance?"
+#     intent:
+#       name: HassGetState
+#       slots:
+#         domain: sensor
+#         device_class: irradiance
+#         name: "Natężenie promieniowania grzejnika w salonie"
+#         # name: "Living room heater irradiance"
+#     response: "Living room heater irradiance is 155 W/m²"
+#
+#   # 20. Moisture
+#   - sentences:
+#       - "Jaka jest wilgotność mieszalnika browaru?"
+#       # - "what is the brewery mixer moisture?"
+#     intent:
+#       name: HassGetState
+#       slots:
+#         domain: sensor
+#         device_class: moisture
+#         name: "Kocioł warzelny"
+#         # name: "Brewery mixer"
+#     response: "Brewery mixer is 83 %"
+#
+#   # 21. Monetary
+#   - sentences:
+#       - "Jaki jest koszt za kw?"
+#       # - "what is the cost of price per kw?"
+#     intent:
+#       name: HassGetState
+#       slots:
+#         domain: sensor
+#         device_class: monetary
+#         name: "Cena za kW"
+#         # name: "Price per kW"
+#     response: "Price per kw is 1 EUR"
+#
+#   # 22. Nitrogen dioxide
+#   - sentences:
+#       - "Jakie jest stężenie dwutlenku azotu w czujniku NO2 pompy ciepła?"
+#       # - "what is the nitrogen dioxide concentration of Heat pump NO2 sensor?"
+#     intent:
+#       name: HassGetState
+#       slots:
+#         domain: sensor
+#         device_class: nitrogen_dioxide
+#         name: "Czujnik NO2 pompy ciepła"
+#         # name: "Heat pump NO2 sensor"
+#     response: "Heat pump no2 sensor is 50 µg/m³"
+#
+#   # 23. Nitrogen monoxide
+#   - sentences:
+#       - "Jakie jest stężenie podtlenku azotu w czujniku NO pompy ciepła?"
+#       # - "what is the nitrogen monoxide concentration of Heat pump NO sensor?"
+#     intent:
+#       name: HassGetState
+#       slots:
+#         domain: sensor
+#         device_class: nitrogen_monoxide
+#         name: "Czujnik NO pompy ciepła"
+#         # name: "Heat pump NO sensor"
+#     response: "Heat pump no sensor is 50 µg/m³"
+#
+#   # 24. Nitrogen oxide
+#   - sentences:
+#       - "Jakie jest stężenie N2O czujnika N2O pompy ciepła?"
+#       # - "what is the N2O concentration of Heat pump N2O sensor?"
+#     intent:
+#       name: HassGetState
+#       slots:
+#         domain: sensor
+#         device_class: nitrous_oxide
+#         name: "Czujnik N2O pompy ciepła"
+#         # name: "Heat pump N2O sensor"
+#     response: "Heat pump n2o sensor is 50 µg/m³"
+#
+#   # 25. Ozone
+#   - sentences:
+#       - "Jaki poziom o3 wskazuje czujnik ozonu w salonie?"
+#       # - "what is the o3 level indicated by living room ozone sensor?"
+#     intent:
+#       name: HassGetState
+#       slots:
+#         domain: sensor
+#         device_class: ozone
+#         name: "Czujnik ozonu w salonie"
+#         # name: "Living room ozone sensor"
+#     response: "Living room ozone sensor is 50 µg/m³"
+#
+#   # 26. PM1
+#   - sentences:
+#       - "Jaki jest poziom PM1 wskazywany przez czujnik PM1 w salonie?"
+#       # - "what is the PM1 level indicated by living room PM1 sensor?"
+#     intent:
+#       name: HassGetState
+#       slots:
+#         domain: sensor
+#         device_class: pm1
+#         name: "Czujnik PM1 w salonie"
+#         # name: "Living room PM1 sensor"
+#     response: "Living room pm1 sensor is 50 µg/m³"
+#
+#   # 27. PM2.5
+#   - sentences:
+#       - "Jaki jest poziom PM2,5 wskazywany przez czujnik PM2,5 w salonie?"
+#       # - "what is the PM2.5 level indicated by living room PM2.5 sensor?"
+#     intent:
+#       name: HassGetState
+#       slots:
+#         domain: sensor
+#         device_class: pm25
+#         name: "Czujnik PM2.5 w salonie"
+#         # name: "Living room PM2.5 sensor"
+#     response: "Living room pm25 sensor is 50 µg/m³"
+#
+#   # 28. PM10
+#   - sentences:
+#       - "Jaki jest poziom PM10 wskazywany przez czujnik PM10 w salonie?"
+#       # - "what is the PM10 level indicated by living room PM10 sensor?"
+#     intent:
+#       name: HassGetState
+#       slots:
+#         domain: sensor
+#         device_class: pm10
+#         name: "Czujnik PM10 w salonie"
+#         # name: "Living room PM10 sensor"
+#     response: "Living room pm10 sensor is 50 µg/m³"
+#
+#   # 29. Power factor
+#   - sentences:
+#       - "Jaki jest współczynnik mocy wtyczki ściennej?"
+#       # - "what is the power factor of the wall plug power factor?"
+#     intent:
+#       name: HassGetState
+#       slots:
+#         domain: sensor
+#         device_class: power_factor
+#         name: "Współczynnik mocy wtyczki ściennej"
+#         # name: "Wall plug power factor"
+#     response: "Wall plug power factor is 2"
+#
+#   # 30. Power
+#   - sentences:
+#       - "Jaka jest moc mocy klimatyzacji?"
+#       # - "what is the power of air conditioning power?"
+#     intent:
+#       name: HassGetState
+#       slots:
+#         domain: sensor
+#         device_class: power
+#         name: "Moc klimatyzacji"
+#         # name: "Air conditioning power"
+#     response: "Air conditioning power is 380 W"
+#
+#   # 31. Precipitation
+#   - sentences:
+#       - "Jaka jest suma opadów wskazywana przez zewnętrzny czujnik deszczu?"
+#       # - "what is the accumulated rainfall indicated by Outside rain sensor?"
+#     intent:
+#       name: HassGetState
+#       slots:
+#         domain: sensor
+#         device_class: precipitation
+#         name: "Zewnętrzny czujnik deszczu"
+#         # name: "Outside rain sensor"
+#     response: "Outside rain sensor is 29 mm"
+#
+#   # 32. Precipitation intensity
+#   - sentences:
+#       - "Jaka jest intensywność opadów wskazywana przez zewnętrzny czujnik deszczu?"
+#       # - "what is the rainfall intensity indicated by Outside rain sensor?"
+#     intent:
+#       name: HassGetState
+#       slots:
+#         domain: sensor
+#         device_class: precipitation_intensity
+#         name: "Zewnętrzny czujnik deszczu"
+#         # name: "Outside rain sensor"
+#     response: "Outside rain sensor is 144 mm/h"
+#
+#   # 33. Pressure
+#   - sentences:
+#       - "Jakie jest ciśnienie w oponach samochodu?"
+#       # - "what is the pressure of the car tyre pressure?"
+#     intent:
+#       name: HassGetState
+#       slots:
+#         domain: sensor
+#         device_class: pressure
+#         name: "Ciśnienie w oponach samochodu"
+#         # name: "Car tyre pressure"
+#     response: "Car tyre pressure is 2.1 bar"
+#
+#   # 34. Reactiv epower
+#   - sentences:
+#       - "Jaka jest moc bierna mocy biernej pompy wodnej?"
+#       # - "what is the reactive power of Water pump reactive power?"
+#     intent:
+#       name: HassGetState
+#       slots:
+#         domain: sensor
+#         device_class: reactive_power
+#         name: "Moc bierna pompy wodnej"
+#         # name: "Water pump reactive power"
+#     response: "Water pump reactive power is 22 VAR"
+#
+#   # 35. Signal strength
+#   - sentences:
+#       - "Jaka jest siła sygnału mierzona przez sygnał gsm mojego telefonu?"
+#       # - "what is the signal strength measured by my phone gsm signal?"
+#     intent:
+#       name: HassGetState
+#       slots:
+#         domain: sensor
+#         device_class: signal_strength
+#         name: "Mój telefon sygnał GSM"
+#         # name: "My phone GSM signal"
+#     response: "My phone gsm signal is -43 dBm"
+#
+#   # 36. Sound pressure
+#   - sentences:
+#       - "Jakie jest ciśnienie akustyczne mierzone za pomocą ciśnienia akustycznego w listwie dźwiękowej?"
+#       # - "what is the acoustic pressure measured by Sound bar acoustic pressure?"
+#     intent:
+#       name: HassGetState
+#       slots:
+#         domain: sensor
+#         device_class: sound_pressure
+#         name: "Ciśnienie akustyczne w subwooferze"
+#         # name: "Sound bar acoustic pressure"
+#     response: "Sound bar acoustic pressure is 62 dB"
+#
+#   # 37. Speed
+#   - sentences:
+#       - "Jaka jest prędkość wskazywana przez prędkość podróżną?"
+#       # - "what is the speed indicated by travelling speed?"
+#     intent:
+#       name: HassGetState
+#       slots:
+#         domain: sensor
+#         device_class: speed
+#         name: "Prędkość jazdy"
+#         # name: "Travelling speed"
+#     response: "Travelling speed is 67 km/h"
+#
+#   # 38. Sulphur dioxide
+#   - sentences:
+#       - "Jakie jest stężenie dwutlenku siarki w czujniku SO2 pompy ciepła?"
+#       # - "what is the sulphur dioxide concentration of Heat pump SO2 sensor?"
+#     intent:
+#       name: HassGetState
+#       slots:
+#         domain: sensor
+#         device_class: sulphur_dioxide
+#         name: "Czujnik SO2 pompy ciepła"
+#         # name: "Heat pump SO2 sensor"
+#     response: "Heat pump so2 sensor is 50 µg/m³"
+#
+#   # 39. Temperature
+#   - sentences:
+#       - "Jaka jest temperatura pieca?"
+#       # - "what is the furnace temperature?"
+#     intent:
+#       name: HassGetState
+#       slots:
+#         domain: sensor
+#         device_class: temperature
+#         name: "Piekarnik"
+#         # name: "Furnace"
+#     response: "Furnace is 380 °C"
+#
+#   # 40. Timestamp
+#   - sentences:
+#       - ""
+#     intent:
+#       name: HassGetState
+#       slots:
+#         domain: sensor
+#         device_class: timestamp
+#         name: ""
+#     response: "Furnace is 380 °C"
+#
+#   # 41. Volatile organic compounds
+#   - sentences:
+#       - "Jakie stężenie związków organicznych wskazuje czujnik kupy?"
+#       # - "what is the concentration of organic compounds indicated by poo poo sensor?"
+#     intent:
+#       name: HassGetState
+#       slots:
+#         domain: sensor
+#         device_class: volatile_organic_compounds
+#         name: "Czujnik odchodów"
+#         # name: "Poo poo sensor"
+#     response: "Poo poo sensor is 35 µg/m³"
+#
+#   # 42. Volatile organic compounds in parts
+#   - sentences:
+#       - "Jakie stężenie związków organicznych wskazuje czujnik kupy 2?"
+#       # - "what is the concentration of organic compounds indicated by poo poo sensor 2?"
+#     intent:
+#       name: HassGetState
+#       slots:
+#         domain: sensor
+#         device_class: volatile_organic_compounds_parts
+#         name: "Drugi czujnik odchodów"
+#         # name: "Poo poo sensor 2"
+#     response: "Poo poo sensor 2 is 35 ppm"
+#
+#   # 43. Voltage
+#   - sentences:
+#       - "Jaki jest spadek napięcia wejściowego?"
+#       # - "what is the input voltage voltage drop?"
+#     intent:
+#       name: HassGetState
+#       slots:
+#         domain: sensor
+#         device_class: voltage
+#         name: "Napięcie wejściowe"
+#         # name: "Input voltage"
+#     response: "Input voltage is 12 V"
+#
+#   # 44. Volume
+#   - sentences:
+#       - "Jakie jest dzisiejsze zużycie pompy wodnej?"
+#       # - "what is the water pump usage today volume?"
+#     intent:
+#       name: HassGetState
+#       slots:
+#         domain: sensor
+#         device_class: volume
+#         name: "Dzisiejsze użycie pompy wodnej"
+#         # name: "Water pump usage today"
+#     response: "Water pump usage today is 1356 L"
+#
+#   # 45. Volume storage
+#   - sentences:
+#       - "Jaka jest całkowita objętość zmagazynowana w buforze pompy wodnej?"
+#       # - "what is the total stored volume in the water pump buffer?"
+#     intent:
+#       name: HassGetState
+#       slots:
+#         domain: sensor
+#         device_class: volume_storage
+#         name: "Bufor pompy wodnej"
+#         # name: "Water pump buffer"
+#     response: "Water pump buffer is 28 L"
+#
+#   # 46. Water
+#   - sentences:
+#       - "Jakie jest zużycie pompy wodnej, całkowita ilość zużytej wody?"
+#       # - "what is the water pump usage total amount of consumed water?"
+#     intent:
+#       name: HassGetState
+#       slots:
+#         domain: sensor
+#         device_class: water
+#         name: "Użycie pompy wodnej"
+#         # name: "Water pump usage"
+#     response: "Water pump usage is 5987 L"
+#
+#   # 47. Weight
+#   - sentences:
+#       - "Jaka jest waga wskazywana przez wagę czujnika łóżka?"
+#       # - "what is the weight indicated by bed sensor weight?"
+#     intent:
+#       name: HassGetState
+#       slots:
+#         domain: sensor
+#         device_class: weight
+#         name: "Waga"
+#         # name: "Bed sensor weight"
+#     response: "Bed sensor weight is 87 kg"
+#
+#   # 48. Wind speed
+#   - sentences:
+#       - "Jaka jest prędkość Mistrala?"
+#       # - "what is Mistral's speed?"
+#     intent:
+#       name: HassGetState
+#       slots:
+#         domain: sensor
+#         device_class: wind_speed
+#         name: "Mistral"
+#         # name: "Mistral"
+#     response: "Mistral is 33 km/h"

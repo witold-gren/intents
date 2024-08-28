@@ -1,0 +1,730 @@
+language: pl
+intents:
+  HassGetState:
+    data:
+      # https://www.home-assistant.io/integrations/sensor/
+      # 1. Apparent power
+      - sentences:
+          - "<what_is_the_class_of_name>"
+        response: one_sensor_apparent_power
+        # response: one_sensor
+        requires_context:
+          domain: sensor
+          device_class: apparent_power
+        slots:
+          domain: sensor
+          device_class: apparent_power
+        expansion_rules:
+          class: "moc [pozorna]"
+        # metadata:
+        #   response_text: Moc pozorna urządzenia wynosi
+
+      # 2. AQI
+      - sentences:
+          - "<what_is_the_class_of_name>"
+        response: one_sensor_aqi
+        requires_context:
+          domain: sensor
+          device_class: aqi
+        slots:
+          domain: sensor
+          device_class: aqi
+        expansion_rules:
+          class: "[indeks|wskaźnik] jakoś(ć|ci) powietrza"
+        # metadata:
+        #   response_text: Indeks jakości powietrza wynosi
+
+      # 3. Atmospheric pressure
+      - sentences:
+          - "<what_is_the_class_of_name>"
+        response: one_sensor_atmospheric_pressure
+        requires_context:
+          domain: sensor
+          device_class: atmospheric_pressure
+        slots:
+          domain: sensor
+          device_class: atmospheric_pressure
+        expansion_rules:
+          class: "ciśnienie (atmosferyczne|powietrza)"
+        # metadata:
+        #   response_text: Ciśnienie atmosferyczne wynosi
+
+      # 4. Battery
+      - sentences:
+          - "<what_is_the_class_of_name>"
+          - "Ile [procent] (baterii|akumulatora) [zostało] w <name>"
+          - "Ile [zostało] [procent] (baterii|akumulatora) w <name>"
+          - "Ile (mam|jest) [procen] baterii w <name>"
+        response: one_sensor_battery
+        requires_context:
+          domain: sensor
+          device_class: battery
+        slots:
+          domain: sensor
+          device_class: battery
+        expansion_rules:
+          class: "[pozostały] [poziom] [naładowania] (baterii|akumulatora)"
+        # metadata:
+        #   response_text: Poziom baterii wynosi
+
+      # 5. CO2
+      - sentences:
+          - "<what_is_the_class_of_name>"
+        response: one_sensor_carbon_dioxide
+        requires_context:
+          domain: sensor
+          device_class: carbon_dioxide
+        slots:
+          domain: sensor
+          device_class: carbon_dioxide
+        expansion_rules:
+          class: "(poziom|stężenie|ilość) (dwutlenku węgla|CO2)"
+        # metadata:
+        #   response_text: Stężenie dwutlenku węgla wynosi
+
+      # 6. CO
+      - sentences:
+          - "<what_is_the_class_of_name>"
+        response: one_sensor_carbon_monoxide
+        requires_context:
+          domain: sensor
+          device_class: carbon_monoxide
+        slots:
+          domain: sensor
+          device_class: carbon_monoxide
+        expansion_rules:
+          class: "(poziom|stężenie|ilość) (tlenku węgla|CO|czadu)"
+        # metadata:
+        #   response_text: Stężenie tlenku węgla wynosi
+
+      # 7. Current
+      - sentences:
+          - "<what_is_the_class_of_name>"
+        response: one_sensor_current
+        requires_context:
+          domain: sensor
+          device_class: current
+        slots:
+          domain: sensor
+          device_class: current
+        expansion_rules:
+          class: "natężenie prądu [elektrycznego]"
+        # metadata:
+        #   response_text: Natężenie prądu elektrycznego wynosi
+
+      # 8. Data rate
+      - sentences:
+          - "<what_is_the_class_of_name>"
+        response: one_sensor_data_rate
+        requires_context:
+          domain: sensor
+          device_class: data_rate
+        slots:
+          domain: sensor
+          device_class: data_rate
+        expansion_rules:
+          class: "(prędkość|szybkość) (pobierania|wysyłania|transmisji|transferu) [danych]"
+        # metadata:
+        #   response_text: Prędkość transferu danych wynosi
+
+      # 9. Data size
+      - sentences:
+          - "<what_is_the_class_of_name>"
+        response: one_sensor_data_size
+        requires_context:
+          domain: sensor
+          device_class: data_size
+        slots:
+          domain: sensor
+          device_class: data_size
+        expansion_rules:
+          class: "(wielkość|rozmiar) [danych]"
+        # metadata:
+        #   response_text: Rozmiar danych wynosi
+
+      # 10. Date
+      - sentences:
+          - "<what_is_the_class_of_name>"
+          - "kiedy (jest|są|odbędą się|odbędzie się|będą) <name>"
+        response: one_sensor_date
+        requires_context:
+          domain: sensor
+          device_class: date
+        slots:
+          domain: sensor
+          device_class: date
+        expansion_rules:
+          class: "[w kalendarzu] data [kalendarzowa]"
+        # metadata:
+        #   response_text: Data w kalendarzu to
+
+      # 11. Distance
+      - sentences:
+          - "<what_is_the_class_of_name>"
+        response: one_sensor_distance
+        requires_context:
+          domain: sensor
+          device_class: distance
+        slots:
+          domain: sensor
+          device_class: distance
+        expansion_rules:
+          class: "(dystans|przebieg|odległość)"
+        # metadata:
+        #   response_text: Odległość wynosi
+
+      # 12. Duration
+      - sentences:
+          - "<what_is_the_class_of_name>"
+        response: one_sensor_duration
+        requires_context:
+          domain: sensor
+          device_class: duration
+        slots:
+          domain: sensor
+          device_class: duration
+        expansion_rules:
+          class: "czas trwania"
+        # metadata:
+        #   response_text: Czas trwania wynosi
+
+      # 13. Energy
+      - sentences:
+          - "<what_is_the_class_of_name>"
+        response: one_sensor_energy
+        requires_context:
+          domain: sensor
+          device_class: energy
+        slots:
+          domain: sensor
+          device_class: energy
+        expansion_rules:
+          class: "((ilość|wartość) energii|energia)"
+        # metadata:
+        #   response_text: Energia wynosi
+
+      # 14. Energy storage
+      - sentences:
+          - "<what_is_the_class_of_name>"
+        response: one_sensor_energy_storage
+        requires_context:
+          domain: sensor
+          device_class: energy_storage
+        slots:
+          domain: sensor
+          device_class: energy_storage
+        expansion_rules:
+          class: "[całkowita] ilość [zmagazynowanej] energii"
+        # metadata:
+        #   response_text: Ilość zmagazynowanej energii wynosi
+
+      # Skipping enum
+      # 15. Frequency
+      - sentences:
+          - "<what_is_the_class_of_name>"
+        response: one_sensor_frequency
+        requires_context:
+          domain: sensor
+          device_class: frequency
+        slots:
+          domain: sensor
+          device_class: frequency
+        expansion_rules:
+          class: "częstotliwość"
+        # metadata:
+        #   response_text: Częstotliwość wynosi
+
+      # 16. Gas
+      - sentences:
+          - "<what_is_the_class_of_name>"
+        response: one_sensor_gas
+        requires_context:
+          domain: sensor
+          device_class: gas
+        slots:
+          domain: sensor
+          device_class: gas
+        expansion_rules:
+          class: "(ilość|objętość) gazu [wykorzystana|zużyta]"
+        # metadata:
+        #   response_text: Objętość gazu wynosi
+
+      # 17. Humidity
+      - sentences:
+          - "<what_is_the_class_of_name>"
+        response: one_sensor_humidity
+        requires_context:
+          domain: sensor
+          device_class: humidity
+        slots:
+          domain: sensor
+          device_class: humidity
+        expansion_rules:
+          class: "wilgotność [względna] [powietrza]"
+        # metadata:
+        #   response_text: Wilgotność względna powietrza wynosi
+
+      # 18. Illuminance
+      - sentences:
+          - "<what_is_the_class_of_name>"
+        response: one_sensor_illuminance
+        requires_context:
+          domain: sensor
+          device_class: illuminance
+        slots:
+          domain: sensor
+          device_class: illuminance
+        expansion_rules:
+          class: "([ilość] [natężenia] (oświetlenia|światła)|poziom (światła|jasności))"
+        # metadata:
+        #   response_text: Natężenia oświetlenia wynosi
+
+      # 19. Irradiance
+      - sentences:
+          - "<what_is_the_class_of_name>"
+        response: one_sensor_irradiance
+        requires_context:
+          domain: sensor
+          device_class: irradiance
+        slots:
+          domain: sensor
+          device_class: irradiance
+        expansion_rules:
+          class: "[natężenie|ilość|poziom] [na]promieniowania"
+        # metadata:
+        #   response_text: Natężenie promieniowania wynosi
+
+      # 20. Moisture
+      - sentences:
+          - "<what_is_the_class_of_name>"
+        response: one_sensor_moisture
+        requires_context:
+          domain: sensor
+          device_class: moisture
+        slots:
+          domain: sensor
+          device_class: moisture
+        expansion_rules:
+          class: "([względna] wilgo(ć|tność)|procent wody)"
+        # metadata:
+        #   response_text: Wilgotność wody wynosi
+
+      # 21. Monetary
+      - sentences:
+          - "<what_is_the_class_of_name>"
+        response: one_sensor_monetary
+        requires_context:
+          domain: sensor
+          device_class: monetary
+        slots:
+          domain: sensor
+          device_class: monetary
+        expansion_rules:
+          class: "(ilość|wysokość) (pieniędzy|gotówki|kasy)"
+        # metadata:
+        #   response_text: Ilość pieniedzy wynosi
+
+      # 22. Nitrogen dioxide
+      - sentences:
+          - "<what_is_the_class_of_name>"
+        response: one_sensor_nitrogen_dioxide
+        requires_context:
+          domain: sensor
+          device_class: nitrogen_dioxide
+        slots:
+          domain: sensor
+          device_class: nitrogen_dioxide
+        expansion_rules:
+          class: "(poziom|stężenie) (dwutlenku azotu|NO2)"
+        # metadata:
+        #   response_text: Stężenie dwutlenku azotu wynosi
+
+      # 23. Nitrogen monoxide
+      - sentences:
+          - "<what_is_the_class_of_name>"
+        response: one_sensor_nitrogen_monoxide
+        requires_context:
+          domain: sensor
+          device_class: nitrogen_monoxide
+        slots:
+          domain: sensor
+          device_class: nitrogen_monoxide
+        expansion_rules:
+          class: "[poziom|stężenie] (tlenku azotu|NO)"
+        # metadata:
+        #   response_text: Stężenie tlenku azotu wynosi
+
+      # 24. Nitrous oxide
+      - sentences:
+          - "<what_is_the_class_of_name>"
+        response: one_sensor_nitrous_oxide
+        requires_context:
+          domain: sensor
+          device_class: nitrous_oxide
+        slots:
+          domain: sensor
+          device_class: nitrous_oxide
+        expansion_rules:
+          class: "[poziom|stężenie] (podtlenku azotu|N2O)"
+        # metadata:
+        #   response_text: Stężenie podtlenku azotu wynosi
+
+      # 25. Ozone
+      - sentences:
+          - "<what_is_the_class_of_name>"
+        response: one_sensor_ozone
+        requires_context:
+          domain: sensor
+          device_class: ozone
+        slots:
+          domain: sensor
+          device_class: ozone
+        expansion_rules:
+          class: "[poziom|stężenie] (ozonu|O3)"
+        # metadata:
+        #   response_text: Stężenie ozonu wynosi
+
+      # 26. PM1
+      - sentences:
+          - "<what_is_the_class_of_name>"
+        response: one_sensor_pm1
+        requires_context:
+          domain: sensor
+          device_class: pm1
+        slots:
+          domain: sensor
+          device_class: pm1
+        expansion_rules:
+          class: "(poziom|stężenie) [cząsteczki] PM1"
+        # metadata:
+        #   response_text: Stężenie cząsteczek PM1 wynosi
+
+      # 27. PM2.5
+      - sentences:
+          - "<what_is_the_class_of_name>"
+        response: one_sensor_pm25
+        requires_context:
+          domain: sensor
+          device_class: pm25
+        slots:
+          domain: sensor
+          device_class: pm25
+        expansion_rules:
+          class: "(poziom|stężenie) [cząsteczki] PM2.5"
+        # metadata:
+        #   response_text: Stężenie cząsteczek PM2.5 wynosi
+
+      # 28. PM10
+      - sentences:
+          - "<what_is_the_class_of_name>"
+        response: one_sensor_pm10
+        requires_context:
+          domain: sensor
+          device_class: pm10
+        slots:
+          domain: sensor
+          device_class: pm10
+        expansion_rules:
+          class: "(poziom|stężenie) [cząsteczki] PM10"
+        # metadata:
+        #   response_text: Stężenie cząsteczek PM10 wynosi
+
+      # 29. Power factor
+      - sentences:
+          - "<what_is_the_class_of_name>"
+        response: one_sensor_power_factor
+        requires_context:
+          domain: sensor
+          device_class: power_factor
+        slots:
+          domain: sensor
+          device_class: power_factor
+        expansion_rules:
+          class: "współczynnik mocy"
+        # metadata:
+        #   response_text: Współczynnik mocy wynosi
+
+      # 30. Power
+      - sentences:
+          - "<what_is_the_class_of_name>"
+        response: one_sensor_power
+        requires_context:
+          domain: sensor
+          device_class: power
+        slots:
+          domain: sensor
+          device_class: power
+        expansion_rules:
+          class: "moc"
+        # metadata:
+        #   response_text: Moc wynosi
+
+      # 31. Precipitation
+      - sentences:
+          - "<what_is_the_class_of_name>"
+        response: one_sensor_precipitation
+        requires_context:
+          domain: sensor
+          device_class: precipitation
+        slots:
+          domain: sensor
+          device_class: precipitation
+        expansion_rules:
+          class: "[poziom|ilość] opad[u] (atmosferyczn(y|ego)|deszczu|śniegu)"
+        # metadata:
+        #   response_text: Poziom opadu atmosferycznego wynosi
+
+      # 32. Precipitation intensity
+      - sentences:
+          - "<what_is_the_class_of_name>"
+        response: one_sensor_precipitation_intensity
+        requires_context:
+          domain: sensor
+          device_class: precipitation_intensity
+        slots:
+          domain: sensor
+          device_class: precipitation_intensity
+        expansion_rules:
+          class: "intensywność [opad[u]] (atmosferyczn(y|ego)|deszczu|śniegu)"
+        # metadata:
+        #   response_text: Intensywność opadu atmosferycznego wynosi
+
+      # 33. Pressure
+      - sentences:
+          - "<what_is_the_class_of_name>"
+        response: one_sensor_pressure
+        requires_context:
+          domain: sensor
+          device_class: pressure
+        slots:
+          domain: sensor
+          device_class: pressure
+        expansion_rules:
+          class: "ciśnienie"
+        # metadata:
+        #   response_text: Ciśnienie wynosi
+
+      # 34. Reactive power
+      - sentences:
+          - "<what_is_the_class_of_name>"
+        response: one_sensor_reactive_power
+        requires_context:
+          domain: sensor
+          device_class: reactive_power
+        slots:
+          domain: sensor
+          device_class: reactive_power
+        expansion_rules:
+          class: "moc reaktywna"
+        # metadata:
+        #   response_text: Moc reaktywna wynosi
+
+      # 35. Signal strength
+      - sentences:
+          - "<what_is_the_class_of_name>"
+        response: one_sensor_signal_strength
+        requires_context:
+          domain: sensor
+          device_class: signal_strength
+        slots:
+          domain: sensor
+          device_class: signal_strength
+        expansion_rules:
+          class: "siła sygnału"
+        # metadata:
+        #   response_text: Siła sygnału wynosi
+
+      # 36. Sound pressure
+      - sentences:
+          - "<what_is_the_class_of_name>"
+        response: one_sensor_sound_pressure
+        requires_context:
+          domain: sensor
+          device_class: sound_pressure
+        slots:
+          domain: sensor
+          device_class: sound_pressure
+        expansion_rules:
+          class: "ciśnienie akustyczne"
+        # metadata:
+        #   response_text: Ciśnienie akustyczne wynosi
+
+      # 37. Speed
+      - sentences:
+          - "<what_is_the_class_of_name>"
+        response: one_sensor_speed
+        requires_context:
+          domain: sensor
+          device_class: speed
+        slots:
+          domain: sensor
+          device_class: speed
+        expansion_rules:
+          class: "(szybkość|prędkość)"
+        # metadata:
+        #   response_text: Prędkość wynosi
+
+      # 38. Sulphur dioxide
+      - sentences:
+          - "<what_is_the_class_of_name>"
+        response: one_sensor_sulphur_dioxide
+        requires_context:
+          domain: sensor
+          device_class: sulphur_dioxide
+        slots:
+          domain: sensor
+          device_class: sulphur_dioxide
+        expansion_rules:
+          class: "[poziom|stężenie] (dwutlenku siarki|SO2)"
+        # metadata:
+        #   response_text: Stężenie dwutlenku siarki wynosi
+
+      # 39. Temperature
+      - sentences:
+          - "<what_is_the_class_of_name>"
+        response: one_sensor_temperature
+        requires_context:
+          domain: sensor
+          device_class: temperature
+        slots:
+          domain: sensor
+          device_class: temperature
+        expansion_rules:
+          class: "temperatura"
+        # metadata:
+        #   response_text: Temperatura wynosi
+
+      # 40. Timestamp
+      - sentences:
+          - "<what_is_the_class_of_name>"
+        response: one_sensor_timestamp
+        requires_context:
+          domain: sensor
+          device_class: timestamp
+        slots:
+          domain: sensor
+          device_class: timestamp
+        expansion_rules:
+          class: "znacznik czasu"
+        # metadata:
+        #   response_text: Znacznik czasu to
+
+      # 41. Volatile organic compounds
+      - sentences:
+          - "<what_is_the_class_of_name>"
+        response: one_sensor_volatile_organic_compounds
+        requires_context:
+          domain: sensor
+          device_class: volatile_organic_compounds
+        slots:
+          domain: sensor
+          device_class: volatile_organic_compounds
+        expansion_rules:
+          class: "lotne związki [organiczne]"
+        # metadata:
+        #   response_text: Lotne związki organiczne wynoszą
+
+      # 42. Volatile organic compounds in parts
+      - sentences:
+          - "<what_is_the_class_of_name>"
+        response: one_sensor_volatile_organic_compounds_parts
+        requires_context:
+          domain: sensor
+          device_class: volatile_organic_compounds_parts
+        slots:
+          domain: sensor
+          device_class: volatile_organic_compounds_parts
+        expansion_rules:
+          class: "lotne związki [organiczne]"
+        # metadata:
+        #   response_text: Lotne związki organiczne wynoszą
+
+      # 43. Voltage
+      - sentences:
+          - "<what_is_the_class_of_name>"
+        response: one_sensor_voltage
+        requires_context:
+          domain: sensor
+          device_class: voltage
+        slots:
+          domain: sensor
+          device_class: voltage
+        expansion_rules:
+          class: "[spadek] napięci(e|a)"
+        # metadata:
+        #   response_text: Napięcie wynosi
+
+      # 44. Volume
+      - sentences:
+          - "<what_is_the_class_of_name>"
+        response: one_sensor_volume
+        requires_context:
+          domain: sensor
+          device_class: volume
+        slots:
+          domain: sensor
+          device_class: volume
+        expansion_rules:
+          class: "objętość"
+        # metadata:
+        #   response_text: Objętość wynosi
+
+      # 45. Volume storage
+      - sentences:
+          - "<what_is_the_class_of_name>"
+        response: one_sensor_volume_storage
+        requires_context:
+          domain: sensor
+          device_class: volume_storage
+        slots:
+          domain: sensor
+          device_class: volume_storage
+        expansion_rules:
+          class: "[całkowita] zmagazynowana objętość"
+        # metadata:
+        #   response_text: Zmagazynowana objętość wynosi
+
+      # 46. Water
+      - sentences:
+          - "<what_is_the_class_of_name>"
+        response: one_sensor_water
+        requires_context:
+          domain: sensor
+          device_class: water
+        slots:
+          domain: sensor
+          device_class: water
+        expansion_rules:
+          class: "[całkowita] ([ilość] [zużytej] wody|konsumpcja wody)"
+        # metadata:
+        #   response_text: Ilość wody wynosi
+
+      # 47. Weight
+      - sentences:
+          - "<what_is_the_class_of_name>"
+        response: one_sensor_weight
+        requires_context:
+          domain: sensor
+          device_class: weight
+        slots:
+          domain: sensor
+          device_class: weight
+        expansion_rules:
+          class: "(waga|masa)"
+        # metadata:
+        #   response_text: Masa wynosi
+
+      # 48. Wind speed
+      - sentences:
+          - "<what_is_the_class_of_name>"
+        response: one_sensor_wind_speed
+        requires_context:
+          domain: sensor
+          device_class: wind_speed
+        slots:
+          domain: sensor
+          device_class: wind_speed
+        expansion_rules:
+          class: "(prędkość|szybkość) [wiatru]"
+        # metadata:
+        #   response_text: Prędkość wiatru wynosi

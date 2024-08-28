@@ -19,16 +19,17 @@ responses:
       one: |
         {% set vowelsList = ['e', 'i', 'o', 'u'] %}
         {% set lastChar = slots.name | last %}
-        {{ slots.name | capitalize }} jest 
+        {{ slots.name | capitalize }}
         {% if state.state_with_unit == 'open': %}
-          {% if lastChar == "a" %}otwarta{% elif lastChar in vowelsList %}otwarte{% else %}otwarty{% endif %}
+          jest {% if lastChar == "a" %}otwarta{% elif lastChar in vowelsList %}otwarte{% else %}otwarty{% endif %}
         {% elif state.state_with_unit == 'close': %}
-          {% if lastChar == "a" %}zamknięta{% elif lastChar in vowelsList %}zamknięte{% else %}zamknięty{% endif %}
+          jest {% if lastChar == "a" %}zamknięta{% elif lastChar in vowelsList %}zamknięte{% else %}zamknięty{% endif %}
         {% elif state.state_with_unit == 'on': %}
-          {% if lastChar == "a" %}włączona{% elif lastChar in vowelsList %}włączone{% else %}włączony{% endif %}
+          jest {% if lastChar == "a" %}włączona{% elif lastChar in vowelsList %}włączone{% else %}włączony{% endif %}
         {% elif state.state_with_unit == 'off': %}
-          {% if lastChar == "a" %}wyłączona{% elif lastChar in vowelsList %}wyłączone{% else %}wyłączony{% endif %}
-        {% else %}{{ state.state_with_unit }}
+          jest {% if lastChar == "a" %}wyłączona{% elif lastChar in vowelsList %}wyłączone{% else %}wyłączony{% endif %}
+        {% else %}
+          jest {{ state.state_with_unit }}
         {% endif %}
 
       one_state: |
@@ -94,6 +95,8 @@ responses:
         {% else %}{{ state.state_with_unit }}
         {% endif %}
         {% endif %}
+
+      one_sensor: "{{ metadata.response_text }} {{ state.state_with_unit }}"
 
       any: |
         {% if query.matched %}
@@ -194,3 +197,101 @@ responses:
         {% else %}
           {{ slots.name | capitalize }} jest w {{ state.state }}
         {% endif %}
+
+      # https://www.home-assistant.io/integrations/sensor/
+
+      one_sensor_apparent_power: Moc pozorna urządzenia wynosi {{ state.state_with_unit }}
+
+      one_sensor_aqi: Indeks jakości powietrza wynosi {{ state.state_with_unit }}
+
+      one_sensor_atmospheric_pressure: Ciśnienie atmosferyczne wynosi {{ state.state_with_unit }}
+
+      one_sensor_battery: Poziom baterii wynosi {{ state.state_with_unit }}
+
+      one_sensor_carbon_dioxide: Stężenie dwutlenku węgla wynosi {{ state.state_with_unit }}
+
+      one_sensor_carbon_monoxide: Stężenie tlenku węgla wynosi {{ state.state_with_unit }}
+
+      one_sensor_current: Natężenie prądu elektrycznego wynosi {{ state.state_with_unit }}
+
+      one_sensor_data_rate: Prędkość transferu danych wynosi {{ state.state_with_unit }}
+
+      one_sensor_data_size: Rozmiar danych wynosi {{ state.state_with_unit }}
+
+      one_sensor_date: Data w kalendarzu to {{ state.state_with_unit }}
+
+      one_sensor_distance: Odległość wynosi {{ state.state_with_unit }}
+
+      one_sensor_duration: Czas trwania wynosi {{ state.state_with_unit }}
+
+      one_sensor_energy: Energia wynosi {{ state.state_with_unit }}
+
+      one_sensor_energy_storage: Ilość zmagazynowanej energii wynosi {{ state.state_with_unit }}
+
+      one_sensor_frequency: Częstotliwość wynosi {{ state.state_with_unit }}
+
+      one_sensor_gas: Objętość gazu wynosi {{ state.state_with_unit }}
+
+      one_sensor_humidity: Wilgotność względna powietrza wynosi {{ state.state_with_unit }}
+
+      one_sensor_illuminance: Natężenia oświetlenia wynosi {{ state.state_with_unit }}
+
+      one_sensor_irradiance: Natężenie promieniowania wynosi {{ state.state_with_unit }}
+
+      one_sensor_moisture: Wilgotność wody wynosi {{ state.state_with_unit }}
+
+      one_sensor_monetary: Ilość pieniedzy wynosi {{ state.state_with_unit }}
+
+      one_sensor_nitrogen_dioxide: Stężenie dwutlenku azotu wynosi {{ state.state_with_unit }}
+
+      one_sensor_nitrogen_monoxide: Stężenie tlenku azotu wynosi {{ state.state_with_unit }}
+
+      one_sensor_nitrous_oxide: Stężenie podtlenku azotu wynosi {{ state.state_with_unit }}
+
+      one_sensor_ozone: Stężenie ozonu wynosi {{state.state_with_unit }}
+
+      one_sensor_pm1: Stężenie cząsteczek PM1 wynosi {{ state.state_with_unit }}
+
+      one_sensor_pm25: Stężenie cząsteczek PM2.5 wynosi {{ state.state_with_unit }}
+
+      one_sensor_pm10: Stężenie cząsteczek PM10 wynosi {{ state.state_with_unit }}
+
+      one_sensor_power_factor: Współczynnik mocy wynosi {{ state.state_with_unit }}
+
+      one_sensor_power: Moc wynosi {{ state.state_with_unit }}
+
+      one_sensor_precipitation: Poziom opadu atmosferycznego wynosi {{ state.state_with_unit }}
+
+      one_sensor_precipitation_intensity: Intensywność opadu atmosferycznego wynosi {{ state.state_with_unit }}
+
+      one_sensor_pressure: Ciśnienie wynosi {{ state.state_with_unit }}
+
+      one_sensor_reactive_power: Moc reaktywna wynosi {{ state.state_with_unit }}
+
+      one_sensor_signal_strength: Siła sygnału wynosi {{ state.state_with_unit }}
+
+      one_sensor_sound_pressure: Ciśnienie akustyczne wynosi {{ state.state_with_unit }}
+
+      one_sensor_speed: Prędkość wynosi {{ state.state_with_unit }}
+
+      one_sensor_sulphur_dioxide: Stężenie dwutlenku siarki wynosi {{ state.state_with_unit }}
+
+      one_sensor_temperature: Temperatura wynosi {{ state.state_with_unit }}
+
+      one_sensor_timestamp: Znacznik czasu to {{ state.state_with_unit }}
+
+      one_sensor_volatile_organic_compounds: Lotne związki organiczne wynoszą {{ state.state_with_unit }}
+
+      one_sensor_volatile_organic_compounds_parts: Lotne związki organiczne wynoszą {{ state.state_with_unit }}
+
+      one_sensor_voltage: Napięcie wynosi {{ state.state_with_unit }}
+
+      one_sensor_volume: Objętość wynosi {{ state.state_with_unit }}
+
+      one_sensor_volume_storage: Zmagazynowana objętość wynosi {{ state.state_with_unit }}
+
+      one_sensor_water: Ilość zużytej wody wynosi {{ state.state_with_unit }}
+
+      one_sensor_weight: Masa wynosi {{ state.state_with_unit }}
+
+      one_sensor_wind_speed: Prędkość wiatru wynosi {{ state.state_with_unit }}
